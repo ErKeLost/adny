@@ -13,9 +13,9 @@ export function chunk(str: string, size = 1): string[] {
 export function mergeObjects(source: any, target: any): any {
   return Object.assign(source, target)
 }
-export function parseHex(value: string): number {
-  return parseInt(value, 16)
-}
+// export function parseHex(value: string): number {
+//   return parseInt(value, 16)
+// }
 export const clamp = (value: number, min: number, max: number) => {
   return min < max
     ? value < min

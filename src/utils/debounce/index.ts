@@ -35,3 +35,6 @@ function debounce(
   return _debounce;
 }
 
+export {
+  debounce
+}

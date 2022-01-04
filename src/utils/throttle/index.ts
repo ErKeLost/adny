@@ -42,3 +42,6 @@ function throttle(
   };
   return _throttle;
 }
+export {
+  throttle
+}
