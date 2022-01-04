@@ -1,7 +1,7 @@
-export * from "./color/color";
-export { DOMUtils } from "./drag/draggable";
+export * from "./utils/color/color";
+export { DOMUtils } from "./dom/drag/draggable";
 
-export * from "./shared";
+export * from "./types/shared";
 export { Tween } from "./animation/tween";
 export * from "./storage";
-export { formatUtc } from "./date";
+export { formatUtc } from "./utils/date";
