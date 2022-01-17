@@ -8,4 +8,5 @@ export * from './utils'
 export * from './types'
 export * from './storage'
 export * from './dom'
+export * from "./shared";
 export { Tween } from "./animation/tween";
