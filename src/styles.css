@@ -627,7 +627,7 @@ a {
 
 .skills-list {
   display: grid;
-  grid-template-columns: 118px minmax(0, 1fr);
+  grid-template-columns: 190px minmax(0, 1fr);
   gap: 14px 20px;
   margin: 0;
 }
@@ -643,6 +643,7 @@ a {
   color: var(--foreground);
   font-size: 13px;
   font-weight: 520;
+  white-space: nowrap;
 }
 
 .skill-row dt svg {
@@ -772,7 +773,7 @@ a {
   }
 
   .skills-list {
-    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-columns: 180px minmax(0, 1fr);
     gap: 16px 12px;
   }
 

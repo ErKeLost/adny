@@ -130,7 +130,7 @@ export const skillGroups = [
 		name: "Agent Engineering",
 		kind: "ai" as const,
 		items: [
-			"Coding Agents",
+			"Agent Harnesses",
 			"Tool Use",
 			"Context Engineering",
 			"Agent Runtime",
@@ -152,13 +152,23 @@ export const skillGroups = [
 		],
 	},
 	{
-		name: "Full-stack Foundation",
+		name: "Full-stack Engineering",
 		kind: "language" as const,
-		items: ["React", "Vue", "Node.js", "Rust", "Go"],
+		items: [
+			"TypeScript",
+			"React",
+			"Vue",
+			"Node.js",
+			"Rust",
+			"Go",
+			"Databases",
+			"Cloud",
+			"DevOps",
+		],
 	},
 	{
-		name: "Open-source Infrastructure",
+		name: "Open-source Ecosystem",
 		kind: "workflow" as const,
-		items: ["Farm", "Rolldown", "Unplugin", "Cloudflare"],
+		items: ["Farm", "Rolldown", "Unplugin", "Varlet", "OpenTiny"],
 	},
 ];
