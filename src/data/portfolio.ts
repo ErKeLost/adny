@@ -12,8 +12,8 @@ export type Product = {
 
 export const siteConfig = {
 	name: "ADNY",
-	role: "Coding Agent Designer & Product Developer",
-	tagline: "Two years designing and building coding agents and products",
+	role: "Coding Agent Engineer & AI Product Designer",
+	tagline: "Researching, designing, and building coding agents",
 	bio: "Day by day. Through and through.",
 	status: "Growing up",
 	domain: "adny.me",
@@ -30,7 +30,7 @@ export const currentProducts: Product[] = [
 		nameWithOwner: "ErKeLost/Tessera",
 		url: "https://github.com/ErKeLost/Tessera",
 		description:
-			"Local-first database analysis agent with governed tools, verified evidence and generated analysis views.",
+			"Local-first data analysis agent for governed tool use, verified evidence, and reproducible analysis views.",
 		language: "TypeScript",
 		languageColor: "#3178c6",
 		stars: 2,
@@ -42,7 +42,7 @@ export const currentProducts: Product[] = [
 		nameWithOwner: "ErKeLost/open-generative",
 		url: "https://github.com/ErKeLost/open-generative",
 		description:
-			"Generative UI workspace with protocol, runtime, React foundation, AI SDK and Mastra integrations.",
+			"Generative UI foundation for agent-driven interfaces across protocol, runtime, React, AI SDK, and Mastra.",
 		language: "TypeScript",
 		languageColor: "#3178c6",
 		stars: 0,
@@ -127,28 +127,38 @@ export const pinnedProducts: Product[] = [
 
 export const skillGroups = [
 	{
-		name: "Languages",
-		kind: "language" as const,
-		items: ["Rust", "Go", "TypeScript", "JavaScript"],
-	},
-	{
-		name: "Web",
-		kind: "frontend" as const,
-		items: ["Vue", "React", "Vite", "Node.js"],
-	},
-	{
-		name: "Infrastructure",
-		kind: "backend" as const,
-		items: ["Farm", "Rolldown", "Turborepo", "Tauri"],
-	},
-	{
-		name: "AI",
+		name: "Agent Engineering",
 		kind: "ai" as const,
-		items: ["Mastra", "AI SDK", "AG-UI", "Generative UI"],
+		items: [
+			"Coding Agents",
+			"Tool Use",
+			"Context Engineering",
+			"Agent Runtime",
+		],
 	},
 	{
-		name: "Workflow",
+		name: "AI Product Design",
+		kind: "frontend" as const,
+		items: ["Agent UX", "Human-AI Interaction", "Evaluation", "Generative UI"],
+	},
+	{
+		name: "Data Analysis Agents",
+		kind: "backend" as const,
+		items: [
+			"Governed Tools",
+			"Evidence",
+			"Analysis Views",
+			"Local-first Systems",
+		],
+	},
+	{
+		name: "Full-stack Foundation",
+		kind: "language" as const,
+		items: ["React", "Vue", "Node.js", "Rust", "Go"],
+	},
+	{
+		name: "Open-source Infrastructure",
 		kind: "workflow" as const,
-		items: ["GitHub", "Bun", "Cloudflare", "shadcn/ui"],
+		items: ["Farm", "Rolldown", "Unplugin", "Cloudflare"],
 	},
 ];

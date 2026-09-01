@@ -158,8 +158,8 @@ export function ScrollHero() {
 					<div className="scroll-hero-content" ref={contentRef}>
 						<h1>{siteConfig.name}</h1>
 						<p>
-							{siteConfig.tagline}. Now researching data analysis agents and
-							generative UI design.
+							{siteConfig.tagline}. Five years in full-stack development, now
+							focused on AI products and agent design.
 						</p>
 						<div className="hero-actions">
 							<Button asChild className="hero-primary" size="sm">

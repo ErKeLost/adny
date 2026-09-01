@@ -191,9 +191,10 @@ function ResumeContent() {
 							.
 						</p>
 						<p>
-							Two years designing and building coding agents and products.
-							Currently researching data analysis agents and generative UI
-							design.
+							Five years across frontend and backend engineering, from product
+							systems to open-source infrastructure. Now focused full-time on
+							coding agent R&amp;D, AI product design, and agent design, with
+							current research in data analysis agents and generative UI.
 						</p>
 					</div>
 				</section>
