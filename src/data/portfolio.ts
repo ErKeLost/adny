@@ -12,8 +12,8 @@ export type Product = {
 
 export const siteConfig = {
 	name: "ADNY",
-	role: "Rust / Go / Node / Web Developer",
-	tagline: "Rust & Go & Node & Web development",
+	role: "Coding Agent Designer & Product Developer",
+	tagline: "Two years designing and building coding agents and products",
 	bio: "Day by day. Through and through.",
 	status: "Growing up",
 	domain: "adny.me",

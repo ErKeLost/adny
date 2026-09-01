@@ -157,7 +157,10 @@ export function ScrollHero() {
 
 					<div className="scroll-hero-content" ref={contentRef}>
 						<h1>{siteConfig.name}</h1>
-						<p>{siteConfig.tagline}. Building open tools and products.</p>
+						<p>
+							{siteConfig.tagline}. Now researching data analysis agents and
+							generative UI design.
+						</p>
 						<div className="hero-actions">
 							<Button asChild className="hero-primary" size="sm">
 								<a href={`mailto:${siteConfig.email}`}>

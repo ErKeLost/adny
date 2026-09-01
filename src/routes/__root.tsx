@@ -20,20 +20,21 @@ export const Route = createRootRoute({
 				name: "viewport",
 				content: "width=device-width, initial-scale=1, viewport-fit=cover",
 			},
-			{ title: "ADNY - Rust / Go / Node / Web Developer" },
+			{ title: "ADNY - Coding Agent Designer & Product Developer" },
 			{
 				name: "description",
 				content:
-					"ADNY's portfolio. Rust, Go, Node, web infrastructure, and open-source tools.",
+					"ADNY designs and builds coding agents and products, researching data analysis agents and generative UI design.",
 			},
 			{ name: "theme-color", content: "#0b0b0c" },
 			{
 				property: "og:title",
-				content: "ADNY - Rust / Go / Node / Web Developer",
+				content: "ADNY - Coding Agent Designer & Product Developer",
 			},
 			{
 				property: "og:description",
-				content: "Rust, Go, Node, web infrastructure, and open-source tools.",
+				content:
+					"Coding agent design and product development, with current research in data analysis agents and generative UI design.",
 			},
 			{ property: "og:type", content: "website" },
 			{ property: "og:url", content: "https://adny.me/" },
@@ -52,7 +53,7 @@ export const Route = createRootRoute({
 					"@type": "Person",
 					name: "ADNY",
 					url: "https://adny.me/",
-					jobTitle: "Rust / Go / Node / Web Developer",
+					jobTitle: "Coding Agent Designer & Product Developer",
 					sameAs: ["https://github.com/ErKeLost"],
 				}),
 			},

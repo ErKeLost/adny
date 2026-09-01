@@ -191,9 +191,9 @@ function ResumeContent() {
 							.
 						</p>
 						<p>
-							Building open-source infrastructure with Rust, Go, Node, and
-							modern web technologies. Currently working on Open Tessera and
-							Open Generative.
+							Two years designing and building coding agents and products.
+							Currently researching data analysis agents and generative UI
+							design.
 						</p>
 					</div>
 				</section>
