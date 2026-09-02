@@ -26,6 +26,18 @@ export const siteConfig = {
 
 export const currentProducts: Product[] = [
 	{
+		name: "Open Artifex",
+		nameWithOwner: "ErKeLost/open-artifex",
+		url: "https://github.com/ErKeLost/open-artifex",
+		description:
+			"Local-first desktop agent with separate coding and everyday work workflows, built around focused task execution.",
+		language: "Go",
+		languageColor: "#00ADD8",
+		stars: 0,
+		forks: 0,
+		ownerAvatar: siteConfig.avatarUrl,
+	},
+	{
 		name: "Open Tessera",
 		nameWithOwner: "ErKeLost/Tessera",
 		url: "https://github.com/ErKeLost/Tessera",
