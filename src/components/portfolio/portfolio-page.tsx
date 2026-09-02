@@ -291,7 +291,7 @@ function ResumeContent() {
 			<VinylAlbumCard
 				artist="Avicii"
 				coverImage="https://i.ytimg.com/vi/IcrbM1l_BoI/hqdefault.jpg"
-				embedUrl="https://open.spotify.com/embed/track/0nrRP2bk19rLc0orkWPQk2?utm_source=generator&theme=0"
+				externalUrl="https://open.spotify.com/track/0nrRP2bk19rLc0orkWPQk2"
 				releaseType="Spotify"
 				title="Wake Me Up"
 				year="2013"
