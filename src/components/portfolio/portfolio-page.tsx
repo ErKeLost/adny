@@ -290,11 +290,11 @@ function ResumeContent() {
 			</div>
 			<VinylAlbumCard
 				artist="Avicii"
-				coverImage="https://i.ytimg.com/vi/IcrbM1l_BoI/hqdefault.jpg"
-				externalUrl="https://open.spotify.com/track/0nrRP2bk19rLc0orkWPQk2"
-				releaseType="Spotify"
-				title="Wake Me Up"
-				year="2013"
+				audioSrc="/avicii-the-nights.mp3"
+				coverImage="/hero-pink.jpg"
+				releaseType="Single"
+				title="The Nights"
+				year="2014"
 			/>
 		</main>
 	);
