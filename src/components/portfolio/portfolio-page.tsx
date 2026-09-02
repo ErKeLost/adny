@@ -289,10 +289,10 @@ function ResumeContent() {
 				</footer>
 			</div>
 			<VinylAlbumCard
-				artist="ADNY"
+				artist="ADNY Original"
 				coverImage="/hero-pink.jpg"
-				releaseType="Portfolio mix"
-				title="A track for the workbench"
+				releaseType="Vinyl loop"
+				title="Pink Orbit"
 				year="2026"
 			/>
 		</main>

@@ -339,6 +339,30 @@ a {
   color: var(--foreground);
 }
 
+.hero-icon-control.icon-control,
+.hero-icon-control.icon-control:hover {
+	border-color: rgba(255, 255, 255, 0.38);
+	color: #ffffff;
+	background: rgba(9, 12, 15, 0.42);
+}
+
+.hero-icon-control.icon-control:focus-visible {
+	outline: 2px solid #ffffff;
+	outline-offset: 2px;
+}
+
+.social-nav .icon-control {
+	border: 1px solid var(--border);
+	color: var(--foreground);
+	background: color-mix(in srgb, var(--card) 88%, transparent);
+}
+
+.social-nav .icon-control:hover {
+	border-color: color-mix(in srgb, var(--timeline-active) 54%, var(--border));
+	color: var(--foreground);
+	background: var(--surface-hover);
+}
+
 .hero-copy {
   margin-top: 25px;
   color: var(--muted-foreground);
@@ -769,11 +793,12 @@ a {
 
 .vinyl-player {
 	position: fixed;
-	bottom: 20px;
-	left: 20px;
+	right: 24px;
+	bottom: 24px;
+	left: auto;
 	z-index: 20;
-	width: 62px;
-	padding: 5px;
+	width: 86px;
+	padding: 7px;
 	border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
 	border-radius: 10px;
 	background: color-mix(in srgb, var(--background) 88%, transparent);
@@ -783,9 +808,10 @@ a {
 	transition: border-color 180ms ease, background-color 180ms ease;
 }
 
-.vinyl-player:hover {
-	width: 206px;
-	padding: 10px;
+.vinyl-player:hover,
+.vinyl-player[data-playing] {
+	width: 242px;
+	padding: 12px;
 	border-color: color-mix(in srgb, var(--timeline-active) 55%, var(--border));
 }
 
@@ -793,27 +819,35 @@ a {
 	position: relative;
 	display: flex;
 	width: 100%;
-	height: 50px;
+	height: 72px;
+	padding: 0;
 	align-items: center;
 	justify-content: center;
+	border: 0;
+	color: inherit;
+	background: transparent;
+	cursor: pointer;
 }
 
-.vinyl-player:hover .vinyl-player-artwork {
-	height: 112px;
+.vinyl-player:hover .vinyl-player-artwork,
+.vinyl-player[data-playing] .vinyl-player-artwork {
+	height: 128px;
 }
 
 .vinyl-record,
 .vinyl-sleeve {
 	position: absolute;
-	width: 50px;
-	height: 50px;
+	width: 72px;
+	height: 72px;
 	overflow: hidden;
 }
 
 .vinyl-player:hover .vinyl-record,
-.vinyl-player:hover .vinyl-sleeve {
-	width: 104px;
-	height: 104px;
+.vinyl-player:hover .vinyl-sleeve,
+.vinyl-player[data-playing] .vinyl-record,
+.vinyl-player[data-playing] .vinyl-sleeve {
+	width: 120px;
+	height: 120px;
 }
 
 .vinyl-record {
@@ -833,16 +867,17 @@ a {
 
 .vinyl-label {
 	position: absolute;
-	width: 17px;
-	height: 17px;
+	width: 24px;
+	height: 24px;
 	border: 2px solid #f4f4f2;
 	border-radius: 50%;
 	object-fit: cover;
 }
 
-.vinyl-player:hover .vinyl-label {
-	width: 32px;
-	height: 32px;
+.vinyl-player:hover .vinyl-label,
+.vinyl-player[data-playing] .vinyl-label {
+	width: 38px;
+	height: 38px;
 }
 
 .vinyl-hole {
@@ -872,10 +907,11 @@ a {
 	align-items: center;
 	justify-content: space-between;
 	gap: 8px;
-	padding: 7px 2px 1px;
+	padding: 8px 2px 1px;
 }
 
-.vinyl-player:hover .vinyl-player-info {
+.vinyl-player:hover .vinyl-player-info,
+.vinyl-player[data-playing] .vinyl-player-info {
 	display: flex;
 }
 
@@ -925,6 +961,11 @@ a {
 .vinyl-play svg {
 	width: 12px;
 	height: 12px;
+}
+
+.vinyl-player-artwork:focus-visible {
+	outline: 2px solid var(--timeline-active);
+	outline-offset: 3px;
 }
 
 .hero-load {
@@ -1055,28 +1096,35 @@ a {
 	}
 
 	.vinyl-player {
+		right: 14px;
 		bottom: 14px;
-		left: 14px;
+		left: auto;
+		width: 82px;
 	}
 
-	.vinyl-player:hover {
-		width: 184px;
-		padding: 8px;
+	.vinyl-player:hover,
+	.vinyl-player[data-playing] {
+		width: 218px;
+		padding: 10px;
 	}
 
-	.vinyl-player:hover .vinyl-player-artwork {
-		height: 96px;
+	.vinyl-player:hover .vinyl-player-artwork,
+	.vinyl-player[data-playing] .vinyl-player-artwork {
+		height: 112px;
 	}
 
 	.vinyl-player:hover .vinyl-record,
-	.vinyl-player:hover .vinyl-sleeve {
-		width: 90px;
-		height: 90px;
+	.vinyl-player:hover .vinyl-sleeve,
+	.vinyl-player[data-playing] .vinyl-record,
+	.vinyl-player[data-playing] .vinyl-sleeve {
+		width: 106px;
+		height: 106px;
 	}
 
-	.vinyl-player:hover .vinyl-label {
-		width: 28px;
-		height: 28px;
+	.vinyl-player:hover .vinyl-label,
+	.vinyl-player[data-playing] .vinyl-label {
+		width: 34px;
+		height: 34px;
 	}
 
   .skills-list {
