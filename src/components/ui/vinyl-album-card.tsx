@@ -136,6 +136,7 @@ export function VinylAlbumCard({
 	year,
 	coverImage,
 	audioSrc,
+	embedUrl,
 	className,
 }: {
 	title: string;
@@ -144,6 +145,7 @@ export function VinylAlbumCard({
 	year: string;
 	coverImage: string;
 	audioSrc?: string;
+	embedUrl?: string;
 	className?: string;
 }) {
 	const [isHovered, setIsHovered] = useState(false);
@@ -154,6 +156,7 @@ export function VinylAlbumCard({
 	const loopRef = useRef<VinylLoop | null>(null);
 
 	useEffect(() => {
+		if (embedUrl) return;
 		if (audioSrc) {
 			const audio = new Audio(audioSrc);
 			audioRef.current = audio;
@@ -171,9 +174,14 @@ export function VinylAlbumCard({
 			void loopRef.current?.stop();
 			loopRef.current = null;
 		};
-	}, [audioSrc]);
+	}, [audioSrc, embedUrl]);
 
 	const togglePlayback = async () => {
+		if (embedUrl) {
+			setIsPlaying((playing) => !playing);
+			return;
+		}
+
 		const audio = audioRef.current;
 		if (!audio && !loopRef.current) return;
 		if (isPlaying) {
@@ -199,12 +207,7 @@ export function VinylAlbumCard({
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>
-			<button
-				aria-label={isPlaying ? `Pause ${title}` : `Play ${title}`}
-				className="vinyl-player-artwork"
-				onClick={togglePlayback}
-				type="button"
-			>
+			<div className="vinyl-player-artwork">
 				<motion.div
 					animate={
 						reduceMotion
@@ -248,7 +251,7 @@ export function VinylAlbumCard({
 				>
 					<img alt={`${title} cover`} src={coverImage} />
 				</motion.div>
-			</button>
+			</div>
 			<div className="vinyl-player-info">
 				<div>
 					<strong>{title}</strong>
@@ -257,9 +260,12 @@ export function VinylAlbumCard({
 					</span>
 				</div>
 				<button
-					aria-label={isPlaying ? "Pause track" : "Play track"}
+					aria-label={isPlaying ? "Pause track" : `Play ${title}`}
 					className="vinyl-play"
-					onClick={togglePlayback}
+					onClick={(event) => {
+						event.stopPropagation();
+						void togglePlayback();
+					}}
 					type="button"
 				>
 					{isPlaying ? (
@@ -269,6 +275,23 @@ export function VinylAlbumCard({
 					)}
 				</button>
 			</div>
+			{embedUrl && isPlaying ? (
+				<iframe
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowFullScreen
+					className="vinyl-official-player"
+					src={embedUrl}
+					title={`${title} by ${artist}`}
+				/>
+			) : null}
+			{!isPlaying ? (
+				<button
+					aria-label={`Play ${title}`}
+					className="vinyl-player-trigger"
+					onClick={() => void togglePlayback()}
+					type="button"
+				/>
+			) : null}
 		</fieldset>
 	);
 }

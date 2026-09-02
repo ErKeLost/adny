@@ -289,11 +289,12 @@ function ResumeContent() {
 				</footer>
 			</div>
 			<VinylAlbumCard
-				artist="ADNY Original"
-				coverImage="/hero-pink.jpg"
-				releaseType="Vinyl loop"
-				title="Pink Orbit"
-				year="2026"
+				artist="Avicii"
+				coverImage="https://i.ytimg.com/vi/IcrbM1l_BoI/hqdefault.jpg"
+				embedUrl="https://open.spotify.com/embed/track/0nrRP2bk19rLc0orkWPQk2?utm_source=generator&theme=0"
+				releaseType="Spotify"
+				title="Wake Me Up"
+				year="2013"
 			/>
 		</main>
 	);

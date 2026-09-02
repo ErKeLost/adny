@@ -468,6 +468,24 @@ a {
   fill: var(--muted-foreground);
 }
 
+@media (min-width: 768px) {
+  .activity-calendar {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .activity-calendar article,
+  .activity-calendar .react-activity-calendar__scroll-container {
+    width: 100% !important;
+    min-width: 0;
+  }
+
+  .activity-calendar .react-activity-calendar__calendar {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .react-activity-calendar__tooltip {
   z-index: 30;
   width: max-content;
@@ -810,7 +828,7 @@ a {
 
 .vinyl-player:hover,
 .vinyl-player[data-playing] {
-	width: 242px;
+	width: 292px;
 	padding: 12px;
 	border-color: color-mix(in srgb, var(--timeline-active) 55%, var(--border));
 }
@@ -963,7 +981,27 @@ a {
 	height: 12px;
 }
 
-.vinyl-player-artwork:focus-visible {
+.vinyl-official-player {
+	display: block;
+	width: 100%;
+	height: 152px;
+	margin-top: 10px;
+	border: 0;
+	border-radius: 6px;
+	background: #111113;
+}
+
+.vinyl-player-trigger {
+	position: absolute;
+	inset: 0;
+	z-index: 10;
+	border: 0;
+	border-radius: inherit;
+	background: transparent;
+	cursor: pointer;
+}
+
+.vinyl-player-trigger:focus-visible {
 	outline: 2px solid var(--timeline-active);
 	outline-offset: 3px;
 }
@@ -1104,7 +1142,7 @@ a {
 
 	.vinyl-player:hover,
 	.vinyl-player[data-playing] {
-		width: 218px;
+		width: 250px;
 		padding: 10px;
 	}
 
