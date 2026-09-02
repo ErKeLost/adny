@@ -1,9 +1,9 @@
 import {
 	ArrowUpRight,
-	Bot,
+	Braces,
 	Code2,
+	GitBranch,
 	GitFork,
-	Github,
 	Layers3,
 	Server,
 	Star,
@@ -33,7 +33,7 @@ const skillIcons = {
 	language: Code2,
 	frontend: Layers3,
 	backend: Server,
-	ai: Bot,
+	ai: Braces,
 	workflow: Wrench,
 } satisfies Record<(typeof skillGroups)[number]["kind"], typeof Code2>;
 
@@ -159,7 +159,7 @@ function ResumeContent() {
 											rel="noreferrer"
 											target="_blank"
 										>
-											<Github aria-hidden="true" />
+											<GitBranch aria-hidden="true" />
 										</a>
 									</Button>
 								</TooltipTrigger>
@@ -278,7 +278,7 @@ function ResumeContent() {
 				<footer className="footer view-reveal">
 					<p>© 2026 {siteConfig.name}</p>
 					<a href={siteConfig.githubUrl} rel="noreferrer" target="_blank">
-						<Github aria-hidden="true" />
+						<GitBranch aria-hidden="true" />
 						ErKeLost on GitHub
 					</a>
 				</footer>

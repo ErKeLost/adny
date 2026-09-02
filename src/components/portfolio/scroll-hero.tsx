@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDownRight, Github, Mail } from "lucide-react";
+import { ArrowDownRight, GitBranch, Mail } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useRef } from "react";
 
@@ -145,7 +145,7 @@ export function ScrollHero() {
 											rel="noreferrer"
 											target="_blank"
 										>
-											<Github aria-hidden="true" />
+											<GitBranch aria-hidden="true" />
 										</a>
 									</Button>
 								</TooltipTrigger>
