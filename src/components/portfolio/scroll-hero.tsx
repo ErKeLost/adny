@@ -1,7 +1,9 @@
 import { useGSAP } from "@gsap/react";
+import { Icon } from "@iconify/react";
+import githubIcon from "@iconify-icons/simple-icons/github";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDownRight, GitBranch, Mail } from "lucide-react";
+import { ArrowDownRight, Mail } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useRef } from "react";
 
@@ -145,7 +147,7 @@ export function ScrollHero() {
 											rel="noreferrer"
 											target="_blank"
 										>
-											<GitBranch aria-hidden="true" />
+											<Icon aria-hidden="true" icon={githubIcon} />
 										</a>
 									</Button>
 								</TooltipTrigger>

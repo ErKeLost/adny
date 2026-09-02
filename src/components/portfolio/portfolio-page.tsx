@@ -1,8 +1,9 @@
+import { Icon } from "@iconify/react";
+import flowConnectionIcon from "@iconify-icons/carbon/flow-connection";
+import githubIcon from "@iconify-icons/simple-icons/github";
 import {
 	ArrowUpRight,
-	Braces,
 	Code2,
-	GitBranch,
 	GitFork,
 	Layers3,
 	Server,
@@ -33,7 +34,7 @@ const skillIcons = {
 	language: Code2,
 	frontend: Layers3,
 	backend: Server,
-	ai: Braces,
+	ai: Code2,
 	workflow: Wrench,
 } satisfies Record<(typeof skillGroups)[number]["kind"], typeof Code2>;
 
@@ -159,7 +160,7 @@ function ResumeContent() {
 											rel="noreferrer"
 											target="_blank"
 										>
-											<GitBranch aria-hidden="true" />
+											<Icon aria-hidden="true" icon={githubIcon} />
 										</a>
 									</Button>
 								</TooltipTrigger>
@@ -219,12 +220,16 @@ function ResumeContent() {
 					</div>
 					<dl className="skills-list">
 						{skillGroups.map((group) => {
-							const Icon = skillIcons[group.kind];
+							const SkillIcon = skillIcons[group.kind];
 
 							return (
 								<div className="skill-row" key={group.name}>
 									<dt>
-										<Icon aria-hidden="true" />
+										{group.kind === "ai" ? (
+											<Icon aria-hidden="true" icon={flowConnectionIcon} />
+										) : (
+											<SkillIcon aria-hidden="true" />
+										)}
 										{group.name}
 									</dt>
 									<dd>
@@ -278,7 +283,7 @@ function ResumeContent() {
 				<footer className="footer view-reveal">
 					<p>© 2026 {siteConfig.name}</p>
 					<a href={siteConfig.githubUrl} rel="noreferrer" target="_blank">
-						<GitBranch aria-hidden="true" />
+						<Icon aria-hidden="true" icon={githubIcon} />
 						ErKeLost on GitHub
 					</a>
 				</footer>
