@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "#/components/ui/button";
-import { Timeline } from "#/components/ui/timeline";
+import { CurvedTimeline } from "#/components/ui/timeline";
 import {
 	Tooltip,
 	TooltipContent,
@@ -260,7 +260,7 @@ function ResumeContent() {
 							<ArrowUpRight aria-hidden="true" />
 						</a>
 					</div>
-					<Timeline
+					<CurvedTimeline
 						entries={timelineGroups.map((group) => ({
 							id: group.id,
 							label: group.label,

@@ -434,6 +434,33 @@ a {
   fill: var(--muted-foreground);
 }
 
+.react-activity-calendar__tooltip {
+  z-index: 30;
+  width: max-content;
+  max-width: min(260px, calc(100vw - 32px));
+  padding: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--timeline-active) 46%, var(--border));
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--card) 96%, transparent);
+  color: var(--foreground);
+  box-shadow: 0 10px 26px rgb(0 0 0 / 16%);
+  font-size: 12px;
+  line-height: 1.35;
+  outline: none;
+  white-space: nowrap;
+}
+
+.react-activity-calendar__tooltip:focus,
+.react-activity-calendar__tooltip:focus-visible {
+  outline: none;
+}
+
+.react-activity-calendar__tooltip-arrow {
+  fill: var(--card);
+  stroke: color-mix(in srgb, var(--timeline-active) 46%, var(--border));
+  stroke-width: 1;
+}
+
 .calendar-skeleton {
   width: 848px;
   height: 132px;
@@ -454,7 +481,7 @@ a {
 .timeline-entry {
   position: relative;
   display: grid;
-  grid-template-columns: 16px 52px minmax(0, 1fr);
+  grid-template-columns: 16px 78px minmax(0, 1fr);
   gap: 10px;
   padding-bottom: 28px;
 }
@@ -466,6 +493,7 @@ a {
 .timeline-axis {
   position: relative;
   min-height: 20px;
+  z-index: 0;
 }
 
 .timeline-axis::after {
@@ -476,6 +504,19 @@ a {
   left: 4px;
   width: 1px;
   background: var(--border);
+}
+
+.timeline-bend {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 112px;
+  height: 36px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
 }
 
 .timeline-entry:last-child .timeline-axis::after {
@@ -504,6 +545,7 @@ a {
   color: var(--muted-foreground);
   font-size: 12px;
   font-weight: 540;
+  white-space: nowrap;
 }
 
 .timeline-entry[data-active] .timeline-label {
@@ -780,6 +822,10 @@ a {
   .timeline-entry {
     grid-template-columns: 16px minmax(0, 1fr);
     gap: 7px;
+  }
+
+  .timeline-bend {
+    display: none;
   }
 
   .timeline-axis {
