@@ -12,12 +12,15 @@ import {
 } from "lucide-react";
 
 import { Button } from "#/components/ui/button";
+import { ImageHoverReveal } from "#/components/ui/image-hover-reveal";
 import { CurvedTimeline } from "#/components/ui/timeline";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
 } from "#/components/ui/tooltip";
+import { VinylAlbumCard } from "#/components/ui/vinyl-album-card";
+import { WordFocusScroll } from "#/components/ui/word-focus-scroll";
 import {
 	currentProducts,
 	type Product,
@@ -132,12 +135,10 @@ function ResumeContent() {
 				<section aria-label="Profile" className="hero hero-load">
 					<div className="hero-topline">
 						<div className="identity-with-avatar">
-							<img
-								alt="ADNY"
+							<ImageHoverReveal
+								alt="ADNY profile photo"
 								className="profile-avatar"
-								height="48"
 								src={siteConfig.avatarUrl}
-								width="48"
 							/>
 							<div className="identity">
 								<h2>{siteConfig.name}</h2>
@@ -191,12 +192,11 @@ function ResumeContent() {
 							</a>
 							.
 						</p>
-						<p>
-							Five years across frontend and backend engineering, from product
-							systems to open-source infrastructure. Now focused full-time on
-							coding agent R&amp;D, AI product design, and agent design, with
-							current research in data analysis agents and generative UI.
-						</p>
+						<WordFocusScroll
+							className="profile-word-focus"
+							itemClassName="profile-word"
+							text="Five years across frontend and backend engineering, from product systems to open-source infrastructure. Now focused full-time on coding agent R&D, AI product design, and agent design, with current research in data analysis agents and generative UI."
+						/>
 					</div>
 				</section>
 
@@ -288,6 +288,13 @@ function ResumeContent() {
 					</a>
 				</footer>
 			</div>
+			<VinylAlbumCard
+				artist="ADNY"
+				coverImage="/hero-pink.jpg"
+				releaseType="Portfolio mix"
+				title="A track for the workbench"
+				year="2026"
+			/>
 		</main>
 	);
 }

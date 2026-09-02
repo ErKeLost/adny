@@ -1,7 +1,7 @@
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 
 import { Button } from "#/components/ui/button";
+import { useSwipeTheme } from "#/components/ui/swipe-theme-provider";
 import {
 	Tooltip,
 	TooltipContent,
@@ -10,25 +10,8 @@ import {
 import { cn } from "#/lib/utils";
 
 export function ThemeToggle({ className }: { className?: string }) {
-	const [isDark, setIsDark] = useState(true);
-
-	useEffect(() => {
-		const root = document.documentElement;
-		const syncTheme = () => setIsDark(root.classList.contains("dark"));
-		const observer = new MutationObserver(syncTheme);
-
-		syncTheme();
-		observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-
-		return () => observer.disconnect();
-	}, []);
-
-	const toggleTheme = () => {
-		const nextIsDark = !isDark;
-		document.documentElement.classList.toggle("dark", nextIsDark);
-		window.localStorage.setItem("adny-theme", nextIsDark ? "dark" : "light");
-		setIsDark(nextIsDark);
-	};
+	const { theme, isAnimating, triggerSwipe } = useSwipeTheme();
+	const isDark = theme === "dark";
 
 	const label = isDark ? "Switch to light mode" : "Switch to dark mode";
 
@@ -37,8 +20,10 @@ export function ThemeToggle({ className }: { className?: string }) {
 			<TooltipTrigger asChild>
 				<Button
 					aria-label={label}
+					aria-busy={isAnimating}
 					className={cn("icon-control", className)}
-					onClick={toggleTheme}
+					disabled={isAnimating}
+					onClick={() => triggerSwipe("left")}
 					size="icon-sm"
 					type="button"
 					variant="ghost"

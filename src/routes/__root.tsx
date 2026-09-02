@@ -5,7 +5,7 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-
+import { SwipeThemeProvider } from "#/components/ui/swipe-theme-provider";
 import { TooltipProvider } from "#/components/ui/tooltip";
 
 import appCss from "../styles.css?url";
@@ -70,7 +70,9 @@ function RootDocument({ children }: { children: ReactNode }) {
 			</head>
 			<body>
 				<ScriptOnce>{themeScript}</ScriptOnce>
-				<TooltipProvider>{children}</TooltipProvider>
+				<SwipeThemeProvider direction="left" angle={10}>
+					<TooltipProvider>{children}</TooltipProvider>
+				</SwipeThemeProvider>
 				<Scripts />
 			</body>
 		</html>
