@@ -169,8 +169,6 @@ export const skillGroups = [
 		items: [
 			"TypeScript",
 			"React",
-			"Vue",
-			"Node.js",
 			"Rust",
 			"Go",
 			"Databases",

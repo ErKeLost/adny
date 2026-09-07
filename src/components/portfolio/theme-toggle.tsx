@@ -7,6 +7,7 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "#/components/ui/tooltip";
+import { playThemeSound } from "#/lib/theme-sound";
 import { cn } from "#/lib/utils";
 
 export function ThemeToggle({ className }: { className?: string }) {
@@ -23,7 +24,10 @@ export function ThemeToggle({ className }: { className?: string }) {
 					aria-busy={isAnimating}
 					className={cn("icon-control", className)}
 					disabled={isAnimating}
-					onClick={() => triggerSwipe("left")}
+					onClick={() => {
+						playThemeSound(isDark);
+						triggerSwipe("left");
+					}}
 					size="icon-sm"
 					type="button"
 					variant="ghost"

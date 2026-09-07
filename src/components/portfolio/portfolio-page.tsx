@@ -31,6 +31,7 @@ import {
 
 import { ActivityCalendar } from "./activity-calendar";
 import { ScrollHero } from "./scroll-hero";
+import { SkillTechnology, Technology, TechnologyStack } from "./technology";
 import { ThemeToggle } from "./theme-toggle";
 
 const skillIcons = {
@@ -195,8 +196,15 @@ function ResumeContent() {
 						<WordFocusScroll
 							className="profile-word-focus"
 							itemClassName="profile-word"
-							text="Five years across frontend and backend engineering, from product systems to open-source infrastructure. Now focused full-time on coding agent R&D, AI product design, and agent design, with current research in data analysis agents and generative UI."
+							text="I research, design, and build coding agents and agents for everyday work. My current focus is agent harnesses, data analysis agents, and generative UI."
 						/>
+						<p className="profile-technologies">
+							Five years of full-stack engineering with{" "}
+							<Technology name="TypeScript" />, <Technology name="React" />,{" "}
+							<Technology name="Vue" /> and <Technology name="Node.js" />,{" "}
+							alongside systems development in <Technology name="Rust" /> and{" "}
+							<Technology name="Go" />.
+						</p>
 					</div>
 				</section>
 
@@ -218,6 +226,7 @@ function ResumeContent() {
 							Technical Focus
 						</h2>
 					</div>
+					<TechnologyStack />
 					<dl className="skills-list">
 						{skillGroups.map((group) => {
 							const SkillIcon = skillIcons[group.kind];
@@ -234,9 +243,7 @@ function ResumeContent() {
 									</dt>
 									<dd>
 										{group.items.map((item) => (
-											<span className="skill-item" key={item}>
-												{item}
-											</span>
+											<SkillTechnology key={item} name={item} />
 										))}
 									</dd>
 								</div>
