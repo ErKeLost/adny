@@ -26,6 +26,18 @@ export const siteConfig = {
 
 export const currentProducts: Product[] = [
 	{
+		name: "Pi GUI",
+		nameWithOwner: "ErKeLost/pi-gui",
+		url: "https://github.com/ErKeLost/pi-gui",
+		description:
+			"Desktop workspace for the Pi coding agent, built with Tauri 2 and React.",
+		language: "TypeScript",
+		languageColor: "#3178c6",
+		stars: 0,
+		forks: 0,
+		ownerAvatar: siteConfig.avatarUrl,
+	},
+	{
 		name: "Open Artifex",
 		nameWithOwner: "ErKeLost/open-artifex",
 		url: "https://github.com/ErKeLost/open-artifex",
