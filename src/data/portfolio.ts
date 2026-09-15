@@ -12,16 +12,39 @@ export type Product = {
 
 export const siteConfig = {
 	name: "ADNY",
-	role: "Coding Agent Engineer & AI Product Designer",
-	tagline: "Researching, designing, and building coding agents",
-	bio: "Day by day. Through and through.",
+	role: "AI Coding Platform Architect & Full-stack Engineer",
+	tagline: "Built HowOne from zero to one",
+	bio: "Designing the systems that turn prompts into working software.",
 	status: "Growing up",
 	domain: "adny.me",
 	email: "hello@adny.me",
+	resumeUrl: "/yu-bo-resume.pdf",
 	githubUsername: "ErKeLost",
 	githubUrl: "https://github.com/ErKeLost?tab=repositories",
 	avatarUrl:
 		"https://avatars.githubusercontent.com/u/66500121?s=260&u=119f691b72af40b20205a4c272112fa8046cfa5e&v=4",
+};
+
+export const howOneCaseStudy = {
+	period: "2025 — now",
+	role: "Technical lead · Architecture owner",
+	title: "HowOne AI Coding Platform",
+	summary:
+		"I led HowOne from an early conversational AI product into a full application-generation platform, connecting intent, planning, code generation, sandboxed execution, preview, versioning, and deployment in one delivery loop.",
+	metrics: [
+		{ label: "Core module reuse", value: "80%" },
+		{ label: "Faster feature integration", value: "+60%" },
+		{ label: "Shorter delivery cycle", value: "−50%" },
+		{ label: "Fewer interrupted runs", value: "−80%" },
+	],
+	capabilities: [
+		"AI Runtime",
+		"Agent orchestration",
+		"Recoverable task execution",
+		"Sandbox Runtime",
+		"Model and AI SDK layer",
+		"Auth, billing, and cost controls",
+	],
 };
 
 export const currentProducts: Product[] = [

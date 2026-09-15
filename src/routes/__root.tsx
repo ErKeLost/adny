@@ -20,21 +20,21 @@ export const Route = createRootRoute({
 				name: "viewport",
 				content: "width=device-width, initial-scale=1, viewport-fit=cover",
 			},
-			{ title: "ADNY - Coding Agent Engineer & AI Product Designer" },
+			{ title: "ADNY - HowOne AI Coding Platform Architect" },
 			{
 				name: "description",
 				content:
-					"ADNY researches, designs, and builds coding agents and AI products, backed by five years of full-stack engineering.",
+					"Technical lead and architecture owner for HowOne, an AI coding platform spanning agent runtime, sandboxed execution, and application delivery.",
 			},
 			{ name: "theme-color", content: "#0b0b0c" },
 			{
 				property: "og:title",
-				content: "ADNY - Coding Agent Engineer & AI Product Designer",
+				content: "ADNY - HowOne AI Coding Platform Architect",
 			},
 			{
 				property: "og:description",
 				content:
-					"Coding agent engineering and AI product design, with current research in data analysis agents and generative UI.",
+					"HowOne technical lead building AI runtime, task orchestration, sandboxed execution, preview, versioning, and deployment.",
 			},
 			{ property: "og:type", content: "website" },
 			{ property: "og:url", content: "https://adny.me/" },
@@ -53,7 +53,7 @@ export const Route = createRootRoute({
 					"@type": "Person",
 					name: "ADNY",
 					url: "https://adny.me/",
-					jobTitle: "Coding Agent Engineer & AI Product Designer",
+					jobTitle: "AI Coding Platform Architect & Full-stack Engineer",
 					sameAs: ["https://github.com/ErKeLost"],
 				}),
 			},
