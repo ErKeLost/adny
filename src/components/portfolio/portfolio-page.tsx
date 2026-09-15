@@ -4,7 +4,6 @@ import githubIcon from "@iconify-icons/simple-icons/github";
 import {
 	ArrowUpRight,
 	Code2,
-	Download,
 	GitFork,
 	Layers3,
 	Server,
@@ -24,7 +23,6 @@ import { VinylAlbumCard } from "#/components/ui/vinyl-album-card";
 import { WordFocusScroll } from "#/components/ui/word-focus-scroll";
 import {
 	currentProducts,
-	howOneCaseStudy,
 	type Product,
 	pinnedProducts,
 	siteConfig,
@@ -176,13 +174,29 @@ function ResumeContent() {
 
 					<div className="hero-copy">
 						<p>
-							Technical lead and architecture owner for HowOne. Farm core
-							maintainer and Unplugin team member.
+							<a
+								className="inline-link"
+								href="https://github.com/unplugin"
+								rel="noreferrer"
+								target="_blank"
+							>
+								Unplugin
+							</a>{" "}
+							team member. Core maintainer at{" "}
+							<a
+								className="inline-link"
+								href="https://github.com/farm-fe/farm"
+								rel="noreferrer"
+								target="_blank"
+							>
+								Farm
+							</a>
+							.
 						</p>
 						<WordFocusScroll
 							className="profile-word-focus"
 							itemClassName="profile-word"
-							text="I design the systems that turn a prompt into working software: agent runtimes, recoverable tasks, sandboxed execution, preview, versioning, and deployment."
+							text="I research, design, and build coding agents and agents for everyday work. My current focus is agent harnesses, data analysis agents, and generative UI."
 						/>
 						<p className="profile-technologies">
 							Five years of full-stack engineering with{" "}
@@ -192,48 +206,6 @@ function ResumeContent() {
 							<Technology name="Go" />.
 						</p>
 					</div>
-				</section>
-
-				<section
-					aria-labelledby="howone-title"
-					className="section howone-feature view-reveal"
-					id="howone"
-				>
-					<div className="section-heading">
-						<div>
-							<p className="section-kicker">
-								{howOneCaseStudy.period} · {howOneCaseStudy.role}
-							</p>
-							<h2 className="howone-title" id="howone-title">
-								{howOneCaseStudy.title}
-							</h2>
-						</div>
-						<a
-							className="section-link resume-link"
-							download
-							href={siteConfig.resumeUrl}
-						>
-							<Download aria-hidden="true" />
-							Resume PDF
-						</a>
-					</div>
-					<p className="howone-summary">{howOneCaseStudy.summary}</p>
-					<dl className="howone-metrics">
-						{howOneCaseStudy.metrics.map((metric) => (
-							<div key={metric.label}>
-								<dd>{metric.value}</dd>
-								<dt>{metric.label}</dt>
-							</div>
-						))}
-					</dl>
-					<ul
-						className="howone-capabilities"
-						aria-label="HowOne platform capabilities"
-					>
-						{howOneCaseStudy.capabilities.map((capability) => (
-							<li key={capability}>{capability}</li>
-						))}
-					</ul>
 				</section>
 
 				<section

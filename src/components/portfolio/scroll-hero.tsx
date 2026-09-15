@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import githubIcon from "@iconify-icons/simple-icons/github";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDownRight, Download, Mail } from "lucide-react";
+import { ArrowDownRight, Mail } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useRef } from "react";
 
@@ -160,8 +160,8 @@ export function ScrollHero() {
 					<div className="scroll-hero-content" ref={contentRef}>
 						<h1>{siteConfig.name}</h1>
 						<p>
-							Built HowOne from zero to one: an AI coding platform spanning
-							agent runtime, sandboxed execution, and application delivery.
+							{siteConfig.tagline}. Five years in full-stack development, now
+							focused on AI products and agent design.
 						</p>
 						<div className="hero-actions">
 							<Button asChild className="hero-primary" size="sm">
@@ -179,17 +179,6 @@ export function ScrollHero() {
 							>
 								Projects
 								<ArrowDownRight aria-hidden="true" />
-							</Button>
-							<Button
-								asChild
-								className="hero-secondary"
-								size="sm"
-								variant="outline"
-							>
-								<a download href={siteConfig.resumeUrl}>
-									<Download aria-hidden="true" />
-									Resume
-								</a>
 							</Button>
 						</div>
 					</div>
