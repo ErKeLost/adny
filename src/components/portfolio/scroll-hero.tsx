@@ -160,8 +160,10 @@ export function ScrollHero() {
 					<div className="scroll-hero-content" ref={contentRef}>
 						<h1>{siteConfig.name}</h1>
 						<p>
-							{siteConfig.tagline}. Five years in full-stack development, now
-							focused on AI products and agent design.
+							Researching, designing, and building{" "}
+							<strong>coding agents</strong>. <strong>Six years</strong> in{" "}
+							<strong>full-stack development</strong>, now focused on{" "}
+							<strong>AI products</strong> and agent design.
 						</p>
 						<div className="hero-actions">
 							<Button asChild className="hero-primary" size="sm">

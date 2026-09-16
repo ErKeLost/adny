@@ -162,7 +162,7 @@ export function GitHubCard({
 				))}
 			</div>
 
-			<span className="calendar-total mt-3 block text-left font-mono text-xs">
+			<span className="calendar-total mt-3 block text-left text-xs">
 				{loaded
 					? `${total.toLocaleString()} contributions in the last 17 weeks`
 					: "Loading contributions"}

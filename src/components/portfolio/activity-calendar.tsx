@@ -1,9 +1,12 @@
 import { ClientOnly } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { GitHubCalendar } from "react-github-calendar";
 
+import { GitHubActivity } from "#/components/ui/github-activity";
 import { Skeleton } from "#/components/ui/skeleton";
 import { siteConfig } from "#/data/portfolio";
+
+const lightAccent = ["#dfdfdc", "#f7e5eb", "#edbdcc", "#d98ca8", "#bd597c"];
+const darkAccent = ["#1f1f21", "#3b2730", "#5e3a48", "#8c596c", "#c77c98"];
 
 function CalendarSkeleton() {
 	return (
@@ -32,51 +35,17 @@ export function ActivityCalendar() {
 
 	return (
 		<div className="activity-viewport">
-			<div className="activity-calendar">
-				<ClientOnly fallback={<CalendarSkeleton />}>
-					<GitHubCalendar
-						blockMargin={3}
-						blockRadius={3}
-						blockSize={13}
-						colorScheme={colorScheme}
-						errorMessage="GitHub activity is temporarily unavailable"
-						fontSize={12}
-						labels={{
-							months: [
-								"Jan",
-								"Feb",
-								"Mar",
-								"Apr",
-								"May",
-								"Jun",
-								"Jul",
-								"Aug",
-								"Sep",
-								"Oct",
-								"Nov",
-								"Dec",
-							],
-							totalCount: "{{count}} contributions in the last year",
-							legend: { less: "Less", more: "More" },
-						}}
-						showColorLegend={false}
-						showWeekdayLabels={false}
-						theme={{
-							light: ["#dfdfdc", "#f7e5eb", "#edbdcc", "#d98ca8", "#bd597c"],
-							dark: ["#1f1f21", "#3b2730", "#5e3a48", "#8c596c", "#c77c98"],
-						}}
-						tooltips={{
-							activity: {
-								text: (activity) =>
-									`${activity.date}: ${activity.count} contributions`,
-								withArrow: true,
-							},
-						}}
-						username={siteConfig.githubUsername}
-						year="last"
-					/>
-				</ClientOnly>
-			</div>
+			<ClientOnly fallback={<CalendarSkeleton />}>
+				<GitHubActivity
+					accent={colorScheme === "dark" ? darkAccent : lightAccent}
+					cellSize={12}
+					className="github-activity-card bg-card dark:bg-card rounded-2xl"
+					label="Top contributions in:"
+					months={12}
+					showMonths
+					username={siteConfig.githubUsername}
+				/>
+			</ClientOnly>
 		</div>
 	);
 }

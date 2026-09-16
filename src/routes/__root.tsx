@@ -24,7 +24,7 @@ export const Route = createRootRoute({
 			{
 				name: "description",
 				content:
-					"ADNY researches, designs, and builds coding agents and AI products, backed by five years of full-stack engineering.",
+					"ADNY researches, designs, and builds coding agents and AI products, backed by six years of full-stack engineering.",
 			},
 			{ name: "theme-color", content: "#0b0b0c" },
 			{
@@ -64,7 +64,7 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: ReactNode }) {
 	return (
-		<html className="dark" lang="en" suppressHydrationWarning>
+		<html className="dark font-sans" lang="en" suppressHydrationWarning>
 			<head>
 				<HeadContent />
 			</head>

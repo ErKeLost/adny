@@ -22,7 +22,6 @@ import {
 } from "#/components/ui/tooltip";
 import { TwitterCard } from "#/components/ui/twitter-card";
 import { VinylAlbumCard } from "#/components/ui/vinyl-album-card";
-import { WordFocusScroll } from "#/components/ui/word-focus-scroll";
 import {
 	currentProducts,
 	type Product,
@@ -176,6 +175,11 @@ function ResumeContent() {
 
 					<div className="hero-copy">
 						<p>
+							Hey! I'm {siteConfig.name}, a{" "}
+							<strong>coding agent engineer</strong> and{" "}
+							<strong>AI product designer</strong>.
+						</p>
+						<p>
 							<a
 								className="inline-link"
 								href="https://github.com/unplugin"
@@ -195,13 +199,20 @@ function ResumeContent() {
 							</a>
 							.
 						</p>
-						<WordFocusScroll
-							className="profile-word-focus"
-							itemClassName="profile-word"
-							text="I research, design, and build coding agents and agents for everyday work. My current focus is agent harnesses, data analysis agents, and generative UI."
-						/>
+						<p>
+							I research, design, and build{" "}
+							<strong>coding agents</strong> and agents for everyday
+							work. My current focus is{" "}
+							<strong>agent harnesses</strong>,{" "}
+							<strong>data analysis agents</strong>, and{" "}
+							<a className="inline-link" href="#projects">
+								generative UI
+							</a>
+							.
+						</p>
 						<p className="profile-technologies">
-							Five years of full-stack engineering with{" "}
+							<strong>Six years</strong> of{" "}
+							<strong>full-stack engineering</strong> with{" "}
 							<Technology name="TypeScript" />, <Technology name="React" />,{" "}
 							<Technology name="Vue" /> and <Technology name="Node.js" />,{" "}
 							alongside systems development in <Technology name="Rust" /> and{" "}

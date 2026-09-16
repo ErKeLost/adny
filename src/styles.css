@@ -1,4 +1,5 @@
-@import '@fontsource-variable/geist';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/inter/wght-italic.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @import 'tw-animate-css';
@@ -63,7 +64,9 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist Variable', 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -98,6 +101,7 @@ html {
   min-height: 100%;
   background: var(--background);
   scroll-behavior: smooth;
+  font-family: var(--font-sans);
 }
 
 body {
@@ -105,13 +109,21 @@ body {
   margin: 0;
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-sans);
+  font-family: inherit;
   font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 button,
@@ -213,16 +225,23 @@ a {
 
 .scroll-hero-content h1 {
   font-size: 72px;
-  font-weight: 620;
-  line-height: 0.95;
-  letter-spacing: 0;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
 .scroll-hero-content p {
   max-width: 470px;
   margin-top: 18px;
+  color: rgba(247, 248, 245, 0.78);
   font-size: 18px;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.scroll-hero-content p strong {
+  color: #ffffff;
+  font-weight: 650;
 }
 
 .scroll-hero .hero-actions {
@@ -295,8 +314,9 @@ a {
 .section-title {
   margin: 0;
   font-size: 16px;
-  font-weight: 560;
+  font-weight: 650;
   line-height: 1.5;
+  letter-spacing: -0.018em;
 }
 
 .identity p {
@@ -370,16 +390,31 @@ a {
 
 .hero-copy {
   margin-top: 25px;
+  max-width: 42rem;
   color: var(--muted-foreground);
+  font-size: 17px;
+  line-height: 1.75;
 }
 
 .hero-copy p + p {
-  margin-top: 10px;
+  margin-top: 1.05em;
+}
+
+.hero-copy strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.hero-copy em {
+  color: var(--foreground);
+  font-style: italic;
+  font-weight: 500;
 }
 
 .hero-copy .profile-technologies {
   margin-top: 14px;
   max-width: 740px;
+  font-size: 16px;
   line-height: 2.1;
 }
 
@@ -472,14 +507,16 @@ a {
 
 .inline-link {
   color: var(--foreground);
+  font-weight: 600;
   text-decoration-line: underline;
-  text-decoration-color: color-mix(in srgb, var(--foreground) 32%, transparent);
-  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--foreground) 28%, transparent);
+  text-underline-offset: 4px;
   transition: color 180ms ease, text-decoration-color 180ms ease;
 }
 
 .inline-link:hover {
-  color: var(--brand);
+  color: var(--foreground);
   text-decoration-color: currentColor;
 }
 
@@ -543,83 +580,27 @@ a {
 
 .activity-viewport {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
 }
 
-.activity-viewport::-webkit-scrollbar {
-  display: none;
+.github-activity-card {
+  width: 100% !important;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  font-family: var(--font-sans);
 }
 
-.activity-calendar {
-  width: max-content;
-  min-width: 100%;
-  color: var(--muted-foreground);
-}
-
-.activity-calendar article {
-  min-width: 848px;
-}
-
-.activity-calendar text {
-  fill: var(--muted-foreground);
-}
-
-@media (min-width: 768px) {
-  .activity-calendar {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .activity-calendar article,
-  .activity-calendar .react-activity-calendar__scroll-container {
-    width: 100% !important;
-    min-width: 0;
-  }
-
-  .activity-calendar .react-activity-calendar__calendar {
-    width: 100%;
-    height: auto;
-  }
-}
-
-.react-activity-calendar__tooltip {
-  z-index: 30;
-  width: max-content;
-  max-width: min(260px, calc(100vw - 32px));
-  padding: 7px 10px;
-  border: 1px solid color-mix(in srgb, var(--timeline-active) 46%, var(--border));
-  border-radius: 7px;
-  background: color-mix(in srgb, var(--card) 96%, transparent);
-  color: var(--foreground);
-  box-shadow: 0 10px 26px rgb(0 0 0 / 16%);
-  font-size: 12px;
-  line-height: 1.35;
-  outline: none;
-  white-space: nowrap;
-}
-
-.react-activity-calendar__tooltip:focus,
-.react-activity-calendar__tooltip:focus-visible {
-  outline: none;
-}
-
-.react-activity-calendar__tooltip-arrow {
-  fill: var(--card);
-  stroke: color-mix(in srgb, var(--timeline-active) 46%, var(--border));
-  stroke-width: 1;
+.github-activity-card [data-slot='github-activity-panel'] {
+  background: color-mix(in srgb, var(--background) 88%, transparent);
 }
 
 .calendar-skeleton {
-  width: 848px;
-  height: 132px;
-  border-radius: 7px;
-  background:
-    linear-gradient(90deg, transparent, color-mix(in srgb, var(--foreground) 6%, transparent), transparent),
-    repeating-linear-gradient(90deg, var(--muted) 0 10px, transparent 10px 13px),
-    repeating-linear-gradient(0deg, transparent 0 13px, var(--background) 13px 16px);
-  background-size: 180px 100%, 100% 100%, 100% 100%;
+  width: 100%;
+  height: 220px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
 }
 
 .timeline {
@@ -1068,6 +1049,7 @@ a {
 	background: var(--popover);
 	color: var(--popover-foreground);
 	box-shadow: 0 10px 26px rgb(0 0 0 / 18%);
+	font-family: var(--font-sans);
 	font-size: 11px;
 	line-height: 1.3;
 	transform: translateX(-50%);
@@ -1095,25 +1077,6 @@ a {
 	.calendar-cell:hover {
 		transform: none;
 	}
-}
-
-.word-focus-scroll {
-	width: 100%;
-	margin-top: 10px;
-}
-
-.word-focus-content {
-	display: block;
-	max-width: 690px;
-}
-
-.word-focus-word {
-	display: inline-block;
-	margin-right: 0.3em;
-	color: var(--muted-foreground);
-	font-size: 16px;
-	line-height: 1.55;
-	transform-origin: 50% 100%;
 }
 
 .vinyl-player {
@@ -1374,10 +1337,6 @@ a {
 
   .hero-topline {
     gap: 16px;
-  }
-
-  .activity-calendar article {
-    min-width: 848px;
   }
 
   .skills-list {
