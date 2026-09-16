@@ -3,10 +3,16 @@ import { useEffect, useState } from "react";
 
 import { GitHubActivity } from "#/components/ui/github-activity";
 import { Skeleton } from "#/components/ui/skeleton";
-import { siteConfig } from "#/data/portfolio";
+import { currentProducts, siteConfig } from "#/data/portfolio";
 
 const lightAccent = ["#dfdfdc", "#f7e5eb", "#edbdcc", "#d98ca8", "#bd597c"];
 const darkAccent = ["#1f1f21", "#3b2730", "#5e3a48", "#8c596c", "#c77c98"];
+
+const repos = currentProducts.map((product) => ({
+	name: product.name,
+	count: product.stars,
+	href: product.url,
+}));
 
 function CalendarSkeleton() {
 	return (
@@ -42,6 +48,7 @@ export function ActivityCalendar() {
 					className="github-activity-card bg-card dark:bg-card rounded-2xl"
 					label="Top contributions in:"
 					months={12}
+					repos={repos}
 					showMonths
 					username={siteConfig.githubUsername}
 				/>

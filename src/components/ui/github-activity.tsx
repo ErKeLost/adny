@@ -236,7 +236,10 @@ function toWeeks(contributions: Contribution[]) {
 
 function useFittedColumns(cellSize: number, gap: number) {
 	const ref = React.useRef<HTMLDivElement>(null);
-	const [layout, setLayout] = React.useState<{ columns: number; width: number }>();
+	const [layout, setLayout] = React.useState<{
+		columns: number;
+		width: number;
+	}>();
 
 	useIsoLayoutEffect(() => {
 		const el = ref.current;
@@ -325,9 +328,7 @@ const ContributionGrid = ({
 	const count = Math.min(cap, layout?.columns ?? cap);
 	const visible = weeks.slice(-count);
 	const size =
-		layout && count > 1
-			? (layout.width - (count - 1) * gap) / count
-			: cellSize;
+		layout && count > 1 ? (layout.width - (count - 1) * gap) / count : cellSize;
 	const sweepEnd = (visible.length - 1) * COLUMN_STAGGER + CELL_FADE.duration;
 
 	const hover = (day: Contribution) => (event: React.PointerEvent) => {
@@ -463,9 +464,11 @@ const RepoRow = ({
 			<span className="flex-1 truncate text-sm text-foreground">
 				{repo.name}
 			</span>
-			<span className="text-sm tabular-nums text-foreground/70">
-				{repo.count}
-			</span>
+			{repo.count > 0 && (
+				<span className="text-sm tabular-nums text-foreground/70">
+					{repo.count}
+				</span>
+			)}
 		</>
 	);
 
@@ -555,7 +558,7 @@ const GitHubActivity = ({
 	const contributions = contributionsProp.length
 		? contributionsProp
 		: (fetched?.contributions ?? placeholder);
-	const repos = reposProp.length ? reposProp : (fetched?.repos ?? []);
+	const repos = fetched?.repos?.length ? fetched.repos : reposProp;
 
 	const scale = React.useMemo(() => toScale(accent), [accent]);
 	const transition = reduceMotion ? { duration: 0 } : SPRING;
@@ -593,7 +596,7 @@ const GitHubActivity = ({
 			data-slot="github-activity"
 			className={cn(
 				"relative max-w-full overflow-hidden rounded-[28px] bg-white p-2 dark:bg-black",
-				repos.length > 0 && "pb-[68px]",
+				repos.length > 0 && "pb-[76px]",
 				className,
 			)}
 			style={{ width, ...style }}
@@ -620,7 +623,7 @@ const GitHubActivity = ({
 					data-slot="github-activity-panel"
 					data-state={open ? "open" : "closed"}
 					className={cn(
-						"absolute inset-x-3 bottom-3 overflow-hidden bg-card/90 backdrop-blur-xl",
+						"absolute inset-x-2 bottom-2 z-10 overflow-hidden bg-card/90 backdrop-blur-xl",
 						open && "top-3",
 					)}
 					style={{ borderRadius: 18 }}
