@@ -48,6 +48,10 @@ const numberFormatter = new Intl.NumberFormat("en-US", {
 	notation: "compact",
 });
 
+function productId(product: Product) {
+	return product.nameWithOwner.replaceAll("/", "-");
+}
+
 function ProductTimelineRow({
 	product,
 	current = false,
@@ -307,21 +311,30 @@ function ResumeContent() {
 						</a>
 					</div>
 					<CurvedTimeline
-						entries={timelineGroups.map((group) => ({
+						groups={timelineGroups.map((group) => ({
 							id: group.id,
 							label: group.label,
 							active: group.active,
-							content: (
-								<div className="timeline-product-list">
-									{group.products.map((product) => (
-										<ProductTimelineRow
-											current={group.active}
-											key={product.nameWithOwner}
-											product={product}
-										/>
-									))}
-								</div>
-							),
+							items: group.products.map((product) => ({
+								id: productId(product),
+								preview: {
+									title: product.name,
+									body: (
+										<>
+											<p className="timeline-preview-kicker">
+												{product.nameWithOwner}
+											</p>
+											<p>{product.description}</p>
+										</>
+									),
+								},
+								content: (
+									<ProductTimelineRow
+										current={group.active}
+										product={product}
+									/>
+								),
+							})),
 						}))}
 					/>
 				</section>
