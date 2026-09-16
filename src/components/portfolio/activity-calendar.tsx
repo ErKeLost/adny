@@ -45,7 +45,7 @@ export function ActivityCalendar() {
 				<GitHubActivity
 					accent={colorScheme === "dark" ? darkAccent : lightAccent}
 					cellSize={12}
-					className="github-activity-card bg-card dark:bg-card rounded-2xl"
+					className="github-activity-card bg-transparent dark:bg-transparent shadow-none"
 					label="Top contributions in:"
 					months={12}
 					repos={repos}

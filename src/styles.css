@@ -585,9 +585,9 @@ a {
 .github-activity-card {
   width: 100% !important;
   max-width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--card);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   font-family: var(--font-sans);
 }
 
