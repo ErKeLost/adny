@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "#/components/ui/button";
+import { GitHubCard } from "#/components/ui/github-card";
 import { ImageHoverReveal } from "#/components/ui/image-hover-reveal";
 import { CurvedTimeline } from "#/components/ui/timeline";
 import {
@@ -19,6 +20,7 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "#/components/ui/tooltip";
+import { TwitterCard } from "#/components/ui/twitter-card";
 import { VinylAlbumCard } from "#/components/ui/vinyl-album-card";
 import { WordFocusScroll } from "#/components/ui/word-focus-scroll";
 import {
@@ -206,6 +208,32 @@ function ResumeContent() {
 							<Technology name="Go" />.
 						</p>
 					</div>
+
+					<div className="profile-cards">
+						<TwitterCard
+							avatarUrl={siteConfig.avatarUrl}
+							className="profile-card-trigger"
+							href={siteConfig.xUrl}
+							labelClassName="profile-card-label"
+							linkClassName="profile-card-link profile-card-link-shimmer"
+							name={siteConfig.name}
+							placement="bottom"
+							popoverClassName="profile-card-popover"
+							text="Follow me on"
+							username={siteConfig.xUsername}
+						/>
+						<GitHubCard
+							avatarUrl={siteConfig.avatarUrl}
+							className="profile-card-trigger"
+							labelClassName="profile-card-label"
+							linkClassName="profile-card-link profile-card-link-shimmer"
+							name={siteConfig.name}
+							placement="bottom"
+							popoverClassName="profile-card-popover profile-card-popover-wide"
+							text="Find me on"
+							username={siteConfig.githubUsername}
+						/>
+					</div>
 				</section>
 
 				<section
@@ -214,7 +242,7 @@ function ResumeContent() {
 				>
 					<div className="section-heading">
 						<h2 className="section-title" id="activity-title">
-							GitHub Activity
+							Work Activity
 						</h2>
 					</div>
 					<ActivityCalendar />

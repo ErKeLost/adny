@@ -269,6 +269,11 @@ a {
 .hero {
   display: flex;
   flex-direction: column;
+  /* hero-load keeps a transform after it finishes (fill mode: both), which makes
+     this element a stacking context. Without an explicit z-index the hover
+     cards inside it would be painted under the following sections. */
+  position: relative;
+  z-index: 2;
 }
 
 .hero-topline {
@@ -705,7 +710,7 @@ a {
 .timeline-product-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
 }
 
 .timeline-product {
@@ -728,7 +733,7 @@ a {
 }
 
 .timeline-product-current {
-  background: color-mix(in srgb, var(--brand) 6%, transparent);
+  background: color-mix(in srgb, var(--timeline-active) 5%, transparent);
 }
 
 .timeline-product-heading {
@@ -881,6 +886,215 @@ a {
 
 .footer a:hover {
 	color: var(--foreground);
+}
+
+.profile-cards {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 22px;
+	margin-top: 18px;
+}
+
+.profile-card-trigger {
+	gap: 5px;
+}
+
+.profile-card-label {
+	color: var(--muted-foreground);
+	font-size: 13px;
+}
+
+.profile-card-link {
+	font-size: 13px;
+	font-weight: 560;
+}
+
+/* Animated gradient text. The clip needs a painted background, so the sweep
+   lives on background-position rather than on a pseudo-element. The band is
+   weighted toward pink, with only a narrow violet edge leading into it. */
+.profile-card-link-shimmer {
+	background-image: linear-gradient(
+		100deg,
+		var(--foreground) 0%,
+		var(--foreground) 24%,
+		color-mix(in srgb, var(--timeline-active) 55%, #a78bfa) 33%,
+		var(--timeline-active) 42%,
+		#ff8ac4 50%,
+		var(--timeline-active) 58%,
+		color-mix(in srgb, var(--timeline-active) 70%, var(--foreground)) 66%,
+		var(--foreground) 76%,
+		var(--foreground) 100%
+	);
+	background-size: 260% 100%;
+	background-position: 100% 0;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	text-decoration: underline;
+	text-decoration-color: color-mix(in srgb, var(--muted-foreground) 45%, transparent);
+	text-underline-offset: 4px;
+	animation: profile-link-shimmer 4.5s linear infinite;
+}
+
+.profile-card-trigger:hover .profile-card-link-shimmer,
+.profile-card-trigger:focus-within .profile-card-link-shimmer {
+	animation-duration: 1.6s;
+	text-decoration-color: color-mix(in srgb, var(--timeline-active) 70%, transparent);
+}
+
+@keyframes profile-link-shimmer {
+	to {
+		background-position: -160% 0;
+	}
+}
+
+.profile-card-trigger a:focus-visible {
+	outline: 2px solid var(--timeline-active);
+	outline-offset: 3px;
+	border-radius: 3px;
+}
+
+.profile-card-popover {
+	width: 292px;
+	border-color: color-mix(in srgb, var(--timeline-active) 38%, var(--border));
+	background: color-mix(in srgb, var(--card) 96%, transparent);
+	box-shadow: 0 18px 44px rgb(0 0 0 / 20%);
+}
+
+/* 17 columns of 12px cells plus 1px gaps and the card padding. */
+.profile-card-popover-wide {
+	width: 302px;
+}
+
+.profile-card-banner {
+	background: var(--muted);
+}
+
+.profile-card-banner-fallback {
+	background: linear-gradient(
+		100deg,
+		color-mix(in srgb, var(--timeline-active) 24%, var(--muted)),
+		color-mix(in srgb, #a78bfa 20%, var(--muted))
+	);
+}
+
+.profile-card-avatar {
+	border-color: var(--card);
+	background: var(--muted);
+}
+
+.profile-card-badge {
+	color: var(--muted-foreground);
+}
+
+.profile-card-name {
+	color: var(--foreground);
+}
+
+.profile-card-handle,
+.profile-card-meta,
+.profile-card-stats {
+	color: var(--muted-foreground);
+}
+
+.profile-card-bio {
+	color: color-mix(in srgb, var(--foreground) 88%, transparent);
+}
+
+.profile-card-meta-link {
+	color: var(--timeline-active);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.profile-card-stat-value {
+	color: var(--foreground);
+}
+
+.profile-card-popover a:focus-visible {
+	outline: 2px solid var(--timeline-active);
+	outline-offset: 2px;
+	border-radius: 3px;
+}
+
+/* Contribution calendar inside the GitHub card. Levels reuse the pink scale
+   from the page's activity calendar so both read as one system. */
+.calendar-cell {
+	position: relative;
+	width: 12px;
+	height: 12px;
+	border-radius: 2.5px;
+	background: var(--calendar-level-0);
+	transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+	--calendar-level-0: #dfdfdc;
+	--calendar-level-1: #f7e5eb;
+	--calendar-level-2: #edbdcc;
+	--calendar-level-3: #d98ca8;
+	--calendar-level-4: #bd597c;
+}
+
+.dark {
+	--calendar-level-0: #1f1f21;
+	--calendar-level-1: #3b2730;
+	--calendar-level-2: #5e3a48;
+	--calendar-level-3: #8c596c;
+	--calendar-level-4: #c77c98;
+}
+
+.calendar-cell[data-level='1'] { background: var(--calendar-level-1); }
+.calendar-cell[data-level='2'] { background: var(--calendar-level-2); }
+.calendar-cell[data-level='3'] { background: var(--calendar-level-3); }
+.calendar-cell[data-level='4'] { background: var(--calendar-level-4); }
+
+.calendar-cell:hover {
+	z-index: 10;
+	transform: scale(1.35);
+}
+
+.calendar-tooltip {
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	z-index: 60;
+	display: none;
+	margin-bottom: 7px;
+	padding: 5px 8px;
+	border: 1px solid color-mix(in srgb, var(--timeline-active) 42%, var(--border));
+	border-radius: 6px;
+	background: var(--popover);
+	color: var(--popover-foreground);
+	box-shadow: 0 10px 26px rgb(0 0 0 / 18%);
+	font-size: 11px;
+	line-height: 1.3;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.calendar-cell:hover .calendar-tooltip {
+	display: block;
+}
+
+.calendar-total {
+	color: var(--muted-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.profile-card-link-shimmer {
+		background-image: none;
+		color: var(--foreground);
+		-webkit-background-clip: border-box;
+		background-clip: border-box;
+		animation: none;
+	}
+
+	.calendar-cell:hover {
+		transform: none;
+	}
 }
 
 .word-focus-scroll {
@@ -1201,6 +1415,10 @@ a {
     align-items: flex-start;
     flex-direction: column;
     gap: 6px;
+  }
+
+  .profile-cards {
+    gap: 10px 18px;
   }
 }
 
