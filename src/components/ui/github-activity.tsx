@@ -33,8 +33,6 @@ const WEEKS_PER_MONTH = 365.25 / 12 / 7;
 const STACK_LIMIT = 3;
 const MIN_CARD_WIDTH = 320;
 const MIN_LABEL_WEEKS = 3;
-// the p-4 on the card, both sides; the width math below has to add it back
-const CARD_PADDING = 16;
 
 const gapFor = (cellSize: number) => Math.max(2, Math.round(cellSize / 4));
 // never zero: weeks.slice(-0) would hand back the whole history instead of nothing
@@ -586,23 +584,20 @@ const GitHubActivity = ({
 		Math.ceil(contributions.length / 7),
 		weeksFor(months),
 	);
-	const width = Math.max(
-		MIN_CARD_WIDTH,
-		columns * (cellSize + gap) - gap + CARD_PADDING,
-	);
+	const width = Math.max(MIN_CARD_WIDTH, columns * (cellSize + gap) - gap);
 
 	return (
 		<div
 			data-slot="github-activity"
 			className={cn(
-				"relative max-w-full overflow-hidden rounded-[28px] bg-white p-2 dark:bg-black",
+				"relative max-w-full overflow-hidden rounded-[28px] bg-white pt-2 dark:bg-black",
 				repos.length > 0 && "pb-[76px]",
 				className,
 			)}
 			style={{ width, ...style }}
 			{...props}
 		>
-			<p className="mb-3 px-0.5 text-base font-medium text-foreground">
+			<p className="mb-3 px-2 text-base font-medium text-foreground">
 				{heading}
 			</p>
 
