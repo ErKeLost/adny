@@ -34,7 +34,7 @@ const STACK_LIMIT = 3;
 const MIN_CARD_WIDTH = 320;
 const MIN_LABEL_WEEKS = 3;
 // the p-4 on the card, both sides; the width math below has to add it back
-const CARD_PADDING = 32;
+const CARD_PADDING = 16;
 
 const gapFor = (cellSize: number) => Math.max(2, Math.round(cellSize / 4));
 // never zero: weeks.slice(-0) would hand back the whole history instead of nothing
@@ -236,16 +236,19 @@ function toWeeks(contributions: Contribution[]) {
 
 function useFittedColumns(cellSize: number, gap: number) {
 	const ref = React.useRef<HTMLDivElement>(null);
-	const [columns, setColumns] = React.useState<number>();
+	const [layout, setLayout] = React.useState<{ columns: number; width: number }>();
 
 	useIsoLayoutEffect(() => {
 		const el = ref.current;
 		if (!el) return;
 
-		const measure = () =>
-			setColumns(
-				Math.max(1, Math.floor((el.clientWidth + gap) / (cellSize + gap))),
-			);
+		const measure = () => {
+			const width = el.clientWidth;
+			setLayout({
+				width,
+				columns: Math.max(1, Math.floor((width + gap) / (cellSize + gap))),
+			});
+		};
 
 		measure();
 		const observer = new ResizeObserver(measure);
@@ -253,7 +256,7 @@ function useFittedColumns(cellSize: number, gap: number) {
 		return () => observer.disconnect();
 	}, [cellSize, gap]);
 
-	return [ref, columns] as const;
+	return [ref, layout] as const;
 }
 
 const Tooltip = ({
@@ -315,11 +318,16 @@ const ContributionGrid = ({
 }) => {
 	const weeks = React.useMemo(() => toWeeks(contributions), [contributions]);
 	const gap = gapFor(cellSize);
-	const [ref, columns] = useFittedColumns(cellSize, gap);
+	const [ref, layout] = useFittedColumns(cellSize, gap);
 	const [hovered, setHovered] = React.useState<HoveredDay>();
 
 	const cap = Math.min(weeks.length, weeksFor(months));
-	const visible = weeks.slice(-Math.min(cap, columns ?? cap));
+	const count = Math.min(cap, layout?.columns ?? cap);
+	const visible = weeks.slice(-count);
+	const size =
+		layout && count > 1
+			? (layout.width - (count - 1) * gap) / count
+			: cellSize;
 	const sweepEnd = (visible.length - 1) * COLUMN_STAGGER + CELL_FADE.duration;
 
 	const hover = (day: Contribution) => (event: React.PointerEvent) => {
@@ -337,7 +345,7 @@ const ContributionGrid = ({
 		>
 			{showMonths && (
 				<motion.div
-					className="flex justify-center"
+					className="flex"
 					style={{ gap, marginBottom: gap }}
 					initial={
 						reduceMotion
@@ -354,7 +362,7 @@ const ContributionGrid = ({
 						<div
 							key={visible[index]?.[0]?.date ?? index}
 							className="relative h-3 shrink-0"
-							style={{ width: cellSize }}
+							style={{ width: size }}
 						>
 							{month && (
 								<span className="absolute left-0 top-0 text-[10px] leading-none text-foreground/40">
@@ -367,7 +375,7 @@ const ContributionGrid = ({
 			)}
 
 			<div
-				className="flex justify-center overflow-hidden"
+				className="flex overflow-hidden"
 				style={{ gap }}
 				onPointerLeave={() => setHovered(undefined)}
 			>
@@ -382,7 +390,7 @@ const ContributionGrid = ({
 								key={day.date}
 								onPointerEnter={hover(day)}
 								className="shrink-0 rounded-[3px] bg-foreground/[0.08]"
-								style={{ width: cellSize, height: cellSize }}
+								style={{ width: size, height: size }}
 								initial={reduceMotion ? false : { opacity: 0, scale: 0.4 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{
@@ -584,14 +592,14 @@ const GitHubActivity = ({
 		<div
 			data-slot="github-activity"
 			className={cn(
-				"relative max-w-full overflow-hidden rounded-[28px] bg-white p-4 dark:bg-black",
-				repos.length > 0 && "pb-[76px]",
+				"relative max-w-full overflow-hidden rounded-[28px] bg-white p-2 dark:bg-black",
+				repos.length > 0 && "pb-[68px]",
 				className,
 			)}
 			style={{ width, ...style }}
 			{...props}
 		>
-			<p className="mb-4 text-base font-medium text-foreground px-1.5">
+			<p className="mb-3 px-0.5 text-base font-medium text-foreground">
 				{heading}
 			</p>
 
