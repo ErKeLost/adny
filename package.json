@@ -2,6 +2,7 @@
   "name": "adny-me",
   "private": true,
   "type": "module",
+  "packageManager": "bun@1.4.0",
   "imports": {
     "#/*": "./src/*"
   },
@@ -13,14 +14,16 @@
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
+    "@fontsource-variable/caveat": "^5.3.0",
     "@fontsource-variable/inter": "^5.3.0",
     "@gsap/react": "^2.1.2",
     "@iconify-icons/carbon": "^2.0.1",
     "@iconify-icons/simple-icons": "^2.0.1",
     "@iconify/react": "^6.0.2",
+    "@tabler/icons-react": "^3.48.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-router": "latest",

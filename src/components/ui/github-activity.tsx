@@ -514,6 +514,7 @@ export type GitHubActivityProps = React.ComponentProps<"div"> & {
 	months?: number;
 	showMonths?: boolean;
 	label?: string;
+	showRepos?: boolean;
 	defaultOpen?: boolean;
 	open?: boolean;
 	onOpenChange?: (open: boolean) => void;
@@ -530,6 +531,7 @@ const GitHubActivity = ({
 	months = DEFAULT_MONTHS,
 	showMonths = false,
 	label = DEFAULT_LABEL,
+	showRepos = true,
 	defaultOpen = false,
 	open: openProp,
 	onOpenChange,
@@ -556,7 +558,11 @@ const GitHubActivity = ({
 	const contributions = contributionsProp.length
 		? contributionsProp
 		: (fetched?.contributions ?? placeholder);
-	const repos = fetched?.repos?.length ? fetched.repos : reposProp;
+	const repos = showRepos
+		? fetched?.repos?.length
+			? fetched.repos
+			: reposProp
+		: [];
 
 	const scale = React.useMemo(() => toScale(accent), [accent]);
 	const transition = reduceMotion ? { duration: 0 } : SPRING;

@@ -19,7 +19,7 @@ export const siteConfig = {
 	domain: "adny.me",
 	email: "hello@adny.me",
 	githubUsername: "ErKeLost",
-	githubUrl: "https://github.com/ErKeLost?tab=repositories",
+	githubUrl: "https://github.com/ErKeLost",
 	xUsername: "Adny56908922543",
 	xUrl: "https://x.com/Adny56908922543",
 	avatarUrl:

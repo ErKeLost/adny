@@ -7,10 +7,15 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "#/components/ui/tooltip";
-import { playThemeSound } from "#/lib/theme-sound";
 import { cn } from "#/lib/utils";
 
-export function ThemeToggle({ className }: { className?: string }) {
+export function ThemeToggle({
+	className,
+	suppressPointerFocus = false,
+}: {
+	className?: string;
+	suppressPointerFocus?: boolean;
+}) {
 	const { theme, isAnimating, triggerSwipe } = useSwipeTheme();
 	const isDark = theme === "dark";
 
@@ -24,8 +29,12 @@ export function ThemeToggle({ className }: { className?: string }) {
 					aria-busy={isAnimating}
 					className={cn("icon-control", className)}
 					disabled={isAnimating}
+					onPointerDown={(event) => {
+						if (suppressPointerFocus && event.pointerType !== "keyboard") {
+							event.preventDefault();
+						}
+					}}
 					onClick={() => {
-						playThemeSound(isDark);
 						triggerSwipe("left");
 					}}
 					size="icon-sm"

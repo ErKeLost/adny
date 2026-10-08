@@ -11,6 +11,7 @@ import {
 	Wrench,
 } from "lucide-react";
 
+// import { AiEditor } from "#/components/ui/ai-editor";
 import { Button } from "#/components/ui/button";
 import { GitHubCard } from "#/components/ui/github-card";
 import { ImageHoverReveal } from "#/components/ui/image-hover-reveal";
@@ -31,6 +32,7 @@ import {
 } from "#/data/portfolio";
 
 import { ActivityCalendar } from "./activity-calendar";
+import { FloatingContactDock } from "./floating-contact-dock";
 import { ScrollHero } from "./scroll-hero";
 import { SkillTechnology, Technology, TechnologyStack } from "./technology";
 import { ThemeToggle } from "./theme-toggle";
@@ -173,51 +175,62 @@ function ResumeContent() {
 						</nav>
 					</div>
 
-					<div className="hero-copy">
-						<p>
-							Hey! I'm {siteConfig.name}, a{" "}
-							<strong>coding agent engineer</strong> and{" "}
-							<strong>AI product designer</strong>.
-						</p>
-						<p>
-							<a
-								className="inline-link"
-								href="https://github.com/unplugin"
-								rel="noreferrer"
-								target="_blank"
-							>
-								Unplugin
-							</a>{" "}
-							team member. Core maintainer at{" "}
-							<a
-								className="inline-link"
-								href="https://github.com/farm-fe/farm"
-								rel="noreferrer"
-								target="_blank"
-							>
-								Farm
-							</a>
-							.
-						</p>
-						<p>
-							I research, design, and build{" "}
-							<strong>coding agents</strong> and agents for everyday
-							work. My current focus is{" "}
-							<strong>agent harnesses</strong>,{" "}
-							<strong>data analysis agents</strong>, and{" "}
-							<a className="inline-link" href="#projects">
-								generative UI
-							</a>
-							.
-						</p>
-						<p className="profile-technologies">
-							<strong>Six years</strong> of{" "}
-							<strong>full-stack engineering</strong> with{" "}
-							<Technology name="TypeScript" />, <Technology name="React" />,{" "}
-							<Technology name="Vue" /> and <Technology name="Node.js" />,{" "}
-							alongside systems development in <Technology name="Rust" /> and{" "}
-							<Technology name="Go" />.
-						</p>
+					<div className="profile-editor-layout">
+						<div aria-hidden="true" className="profile-editor-note">
+							<span>a little about me</span>
+							<svg fill="none" viewBox="0 0 280 124">
+								<title>Curved arrow pointing toward the profile text</title>
+								<path d="M28 7C17 50 70 96 235 108" />
+								<path d="m211 86 27 23-34 10" />
+							</svg>
+						</div>
+						{/* AiEditor 暂时停用，保留 src/components/ui/ai-editor.tsx 方便之后恢复。 */}
+						<div className="profile-ai-editor hero-copy">
+							<p>
+								Hey! I'm {siteConfig.name}, a{" "}
+								<strong>coding agent engineer</strong> and{" "}
+								<strong>AI product designer</strong>.
+							</p>
+							<p>
+								I build <strong>human-centered agents</strong> for coding and
+								everyday work: systems that make intent visible, actions
+								reviewable, and results easy to steer.
+							</p>
+							<p>
+								Currently focused on <strong>agent harnesses</strong>,{" "}
+								<strong>data analysis agents</strong>, and{" "}
+								<a className="inline-link" href="#projects">
+									generative UI
+								</a>
+								, while contributing to{" "}
+								<a
+									className="inline-link"
+									href="https://github.com/unplugin"
+									rel="noreferrer"
+									target="_blank"
+								>
+									Unplugin
+								</a>{" "}
+								and maintaining{" "}
+								<a
+									className="inline-link"
+									href="https://github.com/farm-fe/farm"
+									rel="noreferrer"
+									target="_blank"
+								>
+									Farm
+								</a>
+								.
+							</p>
+							<p className="profile-technologies">
+								<strong>Six years</strong> of{" "}
+								<strong>full-stack engineering</strong> with{" "}
+								<Technology name="TypeScript" />, <Technology name="React" />,{" "}
+								<Technology name="Vue" /> and <Technology name="Node.js" />,{" "}
+								alongside systems development in <Technology name="Rust" /> and{" "}
+								<Technology name="Go" />.
+							</p>
+						</div>
 					</div>
 
 					<div className="profile-cards">
@@ -351,6 +364,7 @@ export function PortfolioPage() {
 		<div className="portfolio-shell">
 			<ScrollHero />
 			<ResumeContent />
+			<FloatingContactDock />
 		</div>
 	);
 }

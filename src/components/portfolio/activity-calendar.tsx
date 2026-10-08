@@ -50,6 +50,7 @@ export function ActivityCalendar() {
 					months={12}
 					repos={repos}
 					showMonths
+					showRepos={false}
 					username={siteConfig.githubUsername}
 				/>
 			</ClientOnly>
