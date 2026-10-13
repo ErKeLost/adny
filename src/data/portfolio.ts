@@ -1,3 +1,5 @@
+import { githubRepos } from "./github-repos";
+
 export type Product = {
 	name: string;
 	nameWithOwner: string;
@@ -9,6 +11,48 @@ export type Product = {
 	forks: number;
 	ownerAvatar: string;
 };
+
+/**
+ * Colors for the languages GitHub reports. The REST API only returns the
+ * language name, not its color, so keep the small subset used here in sync with
+ * https://github.com/github/linguist/blob/master/lib/linguist/languages.yml.
+ */
+const LANGUAGE_COLORS: Record<string, string> = {
+	TypeScript: "#3178c6",
+	JavaScript: "#f1e05a",
+	Vue: "#41b883",
+	Rust: "#dea584",
+	Go: "#00ADD8",
+	Python: "#3572A5",
+	Shell: "#89e051",
+	HTML: "#e34c26",
+	CSS: "#563d7c",
+	Svelte: "#ff3e00",
+};
+
+/**
+ * Overlays the data synced from GitHub onto a hand-authored seed entry.
+ * GitHub is authoritative for the numbers, the editorial copy and the repo
+ * identity; the seed only provides the display name and the timeline grouping,
+ * which GitHub cannot report. See scripts/sync-github.ts.
+ */
+function withLiveRepo(product: Product): Product {
+	const live = githubRepos[product.nameWithOwner.toLowerCase()];
+	if (!live) return product;
+
+	return {
+		...product,
+		// GitHub follows renames, so this also fixes moved repositories.
+		nameWithOwner: live.fullName,
+		url: live.url,
+		description: live.description || product.description,
+		language: live.language || product.language,
+		languageColor: LANGUAGE_COLORS[live.language] ?? product.languageColor,
+		stars: live.stars,
+		forks: live.forks,
+		ownerAvatar: live.ownerAvatar || product.ownerAvatar,
+	};
+}
 
 export const siteConfig = {
 	name: "ADNY",
@@ -26,11 +70,11 @@ export const siteConfig = {
 		"https://avatars.githubusercontent.com/u/66500121?s=260&u=119f691b72af40b20205a4c272112fa8046cfa5e&v=4",
 };
 
-export const currentProducts: Product[] = [
+const currentProductSeed: Product[] = [
 	{
-		name: "Pi GUI",
-		nameWithOwner: "ErKeLost/pi-gui",
-		url: "https://github.com/ErKeLost/pi-gui",
+		name: "Orbit",
+		nameWithOwner: "ErKeLost/Orbit",
+		url: "https://github.com/ErKeLost/Orbit",
 		description:
 			"Desktop workspace for the Pi coding agent, built with Tauri 2 and React.",
 		language: "TypeScript",
@@ -77,7 +121,7 @@ export const currentProducts: Product[] = [
 	},
 ];
 
-export const pinnedProducts: Product[] = [
+const pinnedProductSeed: Product[] = [
 	{
 		name: "Farm",
 		nameWithOwner: "farm-fe/farm",
@@ -150,6 +194,12 @@ export const pinnedProducts: Product[] = [
 		ownerAvatar: siteConfig.avatarUrl,
 	},
 ];
+
+/** Timeline rows for work in flight. Stats come from src/data/github-repos.ts. */
+export const currentProducts: Product[] = currentProductSeed.map(withLiveRepo);
+
+/** Timeline rows for past open-source work. Stats come from github-repos.ts. */
+export const pinnedProducts: Product[] = pinnedProductSeed.map(withLiveRepo);
 
 export const skillGroups = [
 	{

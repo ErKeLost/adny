@@ -30,7 +30,9 @@ export function ThemeToggle({
 					className={cn("icon-control", className)}
 					disabled={isAnimating}
 					onPointerDown={(event) => {
-						if (suppressPointerFocus && event.pointerType !== "keyboard") {
+						// `pointerdown` only fires for mouse, pen and touch, so this can
+						// never interfere with keyboard focus.
+						if (suppressPointerFocus) {
 							event.preventDefault();
 						}
 					}}
